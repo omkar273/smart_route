@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         title: 'Smart Route',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.redAccent),
           useMaterial3: true,
         ),
         scaffoldMessengerKey: scaffoldMessengerKey,

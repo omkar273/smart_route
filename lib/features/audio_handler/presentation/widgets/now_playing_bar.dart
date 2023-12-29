@@ -45,7 +45,7 @@ class _NowPlayingBarState extends State<NowPlayingBar>
           return Container(
             width: MediaQuery.of(context).size.width - 30,
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.redAccent,
               borderRadius: BorderRadius.circular(10),
             ),
             child: ListTile(
@@ -73,7 +73,7 @@ class _NowPlayingBarState extends State<NowPlayingBar>
                     ? const Icon(Icons.pause)
                     : const Icon(Icons.play_arrow),
                 onPressed: () async {
-                  if (state.audioPlayer.playing) {
+                  if (state.isPlaying) {
                     state.audioPlayer.pause();
                     setState(() {
                       _animationController.reset();

@@ -71,6 +71,20 @@ class MusicSongsState extends MusicState {
     }
   }
 
+  void seek(int microSeconds) {
+    audioPlayer.seek(Duration(microseconds: microSeconds));
+  }
+
+  bool get isPlaying => audioPlayer.playing;
+
+  void stopAudio() {
+    try {
+      audioPlayer.stop();
+    } catch (e) {
+      showTextSnackBar(e.toString());
+    }
+  }
+
   @override
   List<Object> get props => [songList, audioPlayer, currentPlayingIndex];
 }

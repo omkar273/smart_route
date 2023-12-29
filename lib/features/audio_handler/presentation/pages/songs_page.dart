@@ -17,7 +17,7 @@ class SongsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.red,
           title: const Text("Music Player"),
           centerTitle: true,
           actions: [
