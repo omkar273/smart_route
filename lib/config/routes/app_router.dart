@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:smart_route/features/audio_handler/presentation/pages/song_info_page.dart';
 import 'package:smart_route/features/audio_handler/presentation/pages/songs_page.dart';
 
 class Approuter {
@@ -22,7 +23,13 @@ class Approuter {
         name: SongsPage.routeName,
         pageBuilder: (context, state) =>
             getPage(child: const SongsPage(), state: state),
-      )
+      ),
+      GoRoute(
+        path: SongInfoPage.routePath,
+        name: SongInfoPage.routeName,
+        pageBuilder: (context, state) =>
+            getPage(child: const SongInfoPage(), state: state),
+      ),
     ];
     router = GoRouter(
       initialLocation: SongsPage.routePath,
@@ -34,7 +41,7 @@ class Approuter {
     required Widget child,
     required GoRouterState state,
   }) {
-    return MaterialPage(
+    return NoTransitionPage(
       key: state.pageKey,
       child: child,
     );

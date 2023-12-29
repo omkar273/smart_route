@@ -70,7 +70,7 @@ Widget buildSongList(MusicSongsState state) => ListView.separated(
         subtitle: Text(state.songList.elementAt(index).artist ?? ""),
         trailing: const Icon(Icons.more_vert),
         onTap: () {
-          state.audioPlayer.play();
+          state.playAudio();
           context.read<MusicHandlerCubit>().setAudioSource(state, index);
         },
       ),

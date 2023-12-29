@@ -24,7 +24,11 @@ class MusicHandlerCubit extends Cubit<MusicState> {
         emit(MusicNoPermissionState());
       }
 
-      final List<SongModel> songsList = await onAudioQuery.querySongs();
+      final List<SongModel> songsList = await onAudioQuery.querySongs(
+        ignoreCase: true,
+        orderType: OrderType.ASC_OR_SMALLER,
+        uriType: UriType.EXTERNAL,
+      );
       if (songsList.isEmpty) {
         emit(MusicNoSongsState());
       }

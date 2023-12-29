@@ -63,6 +63,14 @@ class MusicSongsState extends MusicState {
   @override
   bool get stringify => true;
 
+  void playAudio() {
+    try {
+      audioPlayer.play();
+    } catch (e) {
+      showTextSnackBar(e.toString());
+    }
+  }
+
   @override
   List<Object> get props => [songList, audioPlayer, currentPlayingIndex];
 }

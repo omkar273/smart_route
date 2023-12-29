@@ -4,7 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+import 'package:smart_route/config/routes/app_router.dart';
 import 'package:smart_route/features/audio_handler/presentation/cubit/music_handler_cubit.dart';
+import 'package:smart_route/features/audio_handler/presentation/pages/song_info_page.dart';
 
 class NowPlayingBar extends StatefulWidget {
   const NowPlayingBar({super.key});
@@ -60,7 +62,12 @@ class _NowPlayingBarState extends State<NowPlayingBar>
                 ),
               ),
               style: ListTileStyle.drawer,
-              title: Text('${song.title.substring(0, 20)}...'),
+              title: InkWell(
+                child: Text('${song.title.substring(0, 20)}...'),
+                onTap: () {
+                  Approuter.router.pushNamed(SongInfoPage.routeName);
+                },
+              ),
               trailing: IconButton(
                 icon: state.audioPlayer.playing
                     ? const Icon(Icons.pause)
