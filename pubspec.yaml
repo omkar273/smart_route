@@ -21,6 +21,9 @@ dependencies:
   just_audio_background: ^0.0.1-beta.11
   on_audio_query: ^2.9.0
   permission_handler: ^11.1.0
+  google_maps_flutter: ^2.5.0
+  geocoding: ^2.1.1
+  geolocator: ^10.1.0
   # screenshot: ^2.1.0
   # share_plus: ^7.2.1
   # path_provider: ^2.1.1

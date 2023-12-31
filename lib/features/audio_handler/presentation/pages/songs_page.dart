@@ -16,18 +16,6 @@ class SongsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: const Text("Music Player"),
-          centerTitle: true,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
-            ),
-          ],
-        ),
-        primary: true,
         floatingActionButton: const NowPlayingBar(),
         body: BlocBuilder<MusicHandlerCubit, MusicState>(
           builder: (context, state) {
@@ -59,23 +47,26 @@ class SongsPage extends StatelessWidget {
   }
 }
 
-Widget buildSongList(MusicSongsState state) => ListView.separated(
-      itemBuilder: (context, index) => ListTile(
-        leading: QueryArtworkWidget(
-          id: state.songList.elementAt(index).id,
-          type: ArtworkType.AUDIO,
-          nullArtworkWidget: const Icon(Icons.music_note),
+Widget buildSongList(MusicSongsState state) => Padding(
+      padding: const EdgeInsets.only(bottom: 40),
+      child: ListView.separated(
+        itemBuilder: (context, index) => ListTile(
+          leading: QueryArtworkWidget(
+            id: state.songList.elementAt(index).id,
+            type: ArtworkType.AUDIO,
+            nullArtworkWidget: const Icon(Icons.music_note),
+          ),
+          title: Text(state.songList.elementAt(index).title),
+          subtitle: Text(state.songList.elementAt(index).artist ?? ""),
+          trailing: const Icon(Icons.more_vert),
+          onTap: () {
+            state.playAudio();
+            context.read<MusicHandlerCubit>().setAudioSource(state, index);
+          },
         ),
-        title: Text(state.songList.elementAt(index).title),
-        subtitle: Text(state.songList.elementAt(index).artist ?? ""),
-        trailing: const Icon(Icons.more_vert),
-        onTap: () {
-          state.playAudio();
-          context.read<MusicHandlerCubit>().setAudioSource(state, index);
-        },
+        separatorBuilder: (context, index) => const Divider(),
+        itemCount: state.songList.length,
       ),
-      separatorBuilder: (context, index) => const Divider(),
-      itemCount: state.songList.length,
     );
 
 Widget centerText(String text) => Center(child: Text(text));

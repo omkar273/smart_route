@@ -21,6 +21,8 @@ void main() async {
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
+const appPrimaryColor = Color(0xffA825F8);
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         title: 'Smart Route',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.redAccent),
+          colorScheme: ColorScheme.fromSeed(seedColor: appPrimaryColor),
           useMaterial3: true,
         ),
         scaffoldMessengerKey: scaffoldMessengerKey,

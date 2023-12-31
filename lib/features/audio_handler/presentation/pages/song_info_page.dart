@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:smart_route/core/utils/spacing.dart';
 import 'package:smart_route/features/audio_handler/presentation/cubit/music_handler_cubit.dart';
 
@@ -17,6 +20,9 @@ class _SongInfoPageState extends State<SongInfoPage>
   late bool isPlaying;
   Duration _duration = const Duration();
   Duration _position = const Duration();
+  late StreamSubscription<Duration?> _durationStream;
+  late StreamSubscription<Duration> _positionStream;
+  late StreamSubscription<PlayerState> _playerStateStream;
 
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -37,7 +43,9 @@ class _SongInfoPageState extends State<SongInfoPage>
   void dispose() {
     _animationController.stop();
     _animationController.dispose();
-
+    _durationStream.cancel();
+    _positionStream.cancel();
+    _playerStateStream.cancel();
     super.dispose();
   }
 
@@ -48,18 +56,26 @@ class _SongInfoPageState extends State<SongInfoPage>
       body: BlocBuilder<MusicHandlerCubit, MusicState>(
         builder: (context, state) {
           if (state is MusicSongsState) {
-            state.audioPlayer.durationStream.listen((duration) {
+            _durationStream =
+                state.audioPlayer.durationStream.listen((duration) {
               setState(() {
                 _duration = duration!;
               });
             });
 
-            state.audioPlayer.positionStream.listen((position) {
+            _positionStream =
+                state.audioPlayer.positionStream.listen((position) {
               setState(() {
                 _position = position;
               });
             });
 
+            _playerStateStream =
+                state.audioPlayer.playerStateStream.listen((state) {
+              setState(() {
+                isPlaying = state.playing;
+              });
+            });
             final song = state.songList.elementAt(state.currentPlayingIndex);
             return SafeArea(
               child: SingleChildScrollView(
@@ -129,16 +145,13 @@ class _SongInfoPageState extends State<SongInfoPage>
                           ),
                           IconButton(
                             onPressed: () {
-                              if (state.isPlaying) {
+                              if (isPlaying) {
                                 _animationController.reset();
                                 state.stopAudio();
                               } else {
                                 _animationController.repeat();
                                 state.playAudio();
                               }
-                              setState(() {
-                                isPlaying = state.isPlaying;
-                              });
                             },
                             icon: isPlaying
                                 ? const Icon(Icons.pause, size: 40)
@@ -160,7 +173,7 @@ class _SongInfoPageState extends State<SongInfoPage>
               ),
             );
           }
-          return const CircularProgressIndicator.adaptive();
+          return const Center(child: CircularProgressIndicator.adaptive());
         },
       ),
     );

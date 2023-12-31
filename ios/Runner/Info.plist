@@ -46,6 +46,7 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 
+	<!-- music permissions -->
 	<key>NSAppleMusicUsageDescription</key>
 	<string>$(PROJECT_NAME) requires access to media library</string>
 
@@ -54,5 +55,16 @@
 		<string>audio</string>
 	</array>
 	
+	<!-- background permissions -->
+	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
+	<string>App app want's to access your location to get address</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App app want's to access your location to get address.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App app want's to access your location to get address.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string> App want's to access your location to get address.</string>
+
+
 </dict>
 </plist>
