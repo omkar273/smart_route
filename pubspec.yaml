@@ -12,28 +12,24 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
   equatable: ^2.0.5
   flutter_bloc: ^8.1.3
-  get_it: ^7.6.4
-  go_router: ^13.0.0
+  get_it: ^7.6.6
+  go_router: ^13.0.1
   just_audio: ^0.9.36
   just_audio_background: ^0.0.1-beta.11
   on_audio_query: ^2.9.0
   permission_handler: ^11.1.0
-  google_maps_flutter: ^2.5.0
-  geocoding: ^2.1.1
-  geolocator: ^10.1.0
-  # screenshot: ^2.1.0
-  # share_plus: ^7.2.1
-  # path_provider: ^2.1.1
+  dio: ^5.4.0
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.3
 
 flutter_launcher_icons:
   android: true

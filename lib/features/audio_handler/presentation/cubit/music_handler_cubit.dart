@@ -28,7 +28,7 @@ class MusicHandlerCubit extends Cubit<MusicState> {
         ignoreCase: true,
         orderType: OrderType.ASC_OR_SMALLER,
         uriType: UriType.EXTERNAL,
-      );
+      ); 
       if (songsList.isEmpty) {
         emit(MusicNoSongsState());
       }
