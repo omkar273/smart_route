@@ -1,16 +1,74 @@
-# smart_route
+# Smart Route
 
-A new Flutter project.
+Welcome to Smart Route! 
+## Prerequisites
 
-## Getting Started
+Before you begin, ensure you have met the following requirements:
 
-This project is a starting point for a Flutter application.
+- Flutter SDK installed on your machine
+- An IDE for Flutter development (e.g., Visual Studio Code, Android Studio)
 
-A few resources to get you started if this is your first Flutter project:
+## Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Follow these steps to install Flutter on your machine:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. **Download Flutter:**
+   Visit the official [Flutter website](https://flutter.dev/docs/get-started/install) and download the latest stable release for your operating system.
+
+2. **Extract the ZIP:**
+   Extract the downloaded ZIP file to a location on your machine.
+
+3. **Add Flutter to Path:**
+   Add the Flutter binary path to your system environment variables.
+
+    For example, on Linux or macOS, add the following line to your `.bashrc` or `.zshrc` file:
+
+    ```bash
+    export PATH="$PATH:`<path-to-flutter-directory>`/flutter/bin"
+    ```
+
+    On Windows, add the Flutter binary path to the system's PATH variable.
+
+4. **Install Dependencies:**
+   Run the following command in your terminal to install Flutter dependencies:
+
+    ```bash
+    flutter doctor
+    ```
+
+   Follow any additional instructions provided by the `flutter doctor` command.
+
+## Running the App
+
+Follow these steps to run the Flutter app:
+
+1. **Clone the Repository:**
+   Clone this repository to your local machine using:
+
+    ```bash
+    git clone https://github.com/omkar273/smart_route.git
+    ```
+
+2. **Navigate to the Project Directory:**
+   Change your working directory to the cloned project folder:
+
+    ```bash
+    cd smart_route
+    ```
+
+3. **Get Dependencies:**
+   Run the following command to get the project dependencies:
+
+    ```bash
+    flutter pub get
+    ```
+
+4. **Run the App:**
+   Launch the app using the following command:
+
+    ```bash
+    flutter run
+    ```
+
+   This will compile and run the Flutter app on the connected device or emulator.
+
