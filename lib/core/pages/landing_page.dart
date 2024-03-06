@@ -14,7 +14,7 @@ class LandingPage extends StatelessWidget {
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
-        onTap: (index) => navigationShell.goBranch(0),
+        onTap: (index) => navigationShell.goBranch(index),
         backgroundColor: Colors.amber,
         elevation: 10,
         enableFeedback: true,

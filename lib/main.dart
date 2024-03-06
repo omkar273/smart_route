@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:smart_route/config/route/app_router.dart';
 import 'package:smart_route/core/get_it/service_locator.dart';
+import 'package:smart_route/features/music/presentation/cubit/music_cubit.dart';
 
 void main() async {
   Approuter.instance;
@@ -23,15 +25,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Smart Route',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MusicCubit>(
+          create: (context) => MusicCubit(),
+        ),
+      ],
+      child: MaterialApp.router(
+        title: 'Smart Route',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+          useMaterial3: true,
+        ),
+        scaffoldMessengerKey: scaffoldMessengerKey,
+        routerConfig: Approuter.router,
+        debugShowCheckedModeBanner: false,
       ),
-      scaffoldMessengerKey: scaffoldMessengerKey,
-      routerConfig: Approuter.router,
-      debugShowCheckedModeBanner: false,
     );
   }
 }

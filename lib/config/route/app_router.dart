@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smart_route/core/pages/landing_page.dart';
+import 'package:smart_route/features/music/presentation/pages/music_page.dart';
 import 'package:smart_route/main.dart';
 
 class Approuter {
@@ -13,7 +14,7 @@ class Approuter {
       GlobalKey<NavigatorState>();
   static final GlobalKey<NavigatorState> musicTabNavigatorKey =
       GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> searchTabNavigatorKey =
+  static final GlobalKey<NavigatorState> homeTabNavigatorKey =
       GlobalKey<NavigatorState>();
 
   Approuter.init() {
@@ -23,13 +24,26 @@ class Approuter {
         parentNavigatorKey: parentNavigatorKey,
         branches: <StatefulShellBranch>[
           StatefulShellBranch(
-            navigatorKey: musicTabNavigatorKey,
+            navigatorKey: homeTabNavigatorKey,
             routes: [
               GoRoute(
                 path: MyHomePage.routePath,
                 name: MyHomePage.routeName,
                 pageBuilder: (context, state) => getPage(
                   child: const MyHomePage(),
+                  state: state,
+                ),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: musicTabNavigatorKey,
+            routes: [
+              GoRoute(
+                path: MusicPage.routePath,
+                name: MusicPage.routeName,
+                pageBuilder: (context, state) => getPage(
+                  child: const MusicPage(),
                   state: state,
                 ),
               ),

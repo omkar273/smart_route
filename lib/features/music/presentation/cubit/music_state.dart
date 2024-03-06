@@ -8,3 +8,5 @@ abstract class MusicState extends Equatable {
 }
 
 class MusicInitial extends MusicState {}
+
+class MusicNoPermissionState extends MusicState {}
