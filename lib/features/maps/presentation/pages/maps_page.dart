@@ -22,7 +22,7 @@ class _MapNavigationState extends State<MapNavigation> {
             flex: 15,
             child: Column(
               children: [
-                Expanded(),
+                
                 MapPageSongTile(),
               ],
             ),

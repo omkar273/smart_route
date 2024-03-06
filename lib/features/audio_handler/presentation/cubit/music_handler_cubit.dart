@@ -20,15 +20,18 @@ class MusicHandlerCubit extends Cubit<MusicState> {
 
   void getSongs() async {
     try {
-      if (!(await requestPermission(Permission.audio))) {
+      final isPermissionGranted = (await requestPermission(Permission.audio) ||
+          await requestPermission(Permission.storage));
+      if (!isPermissionGranted) {
         emit(MusicNoPermissionState());
+        return;
       }
 
       final List<SongModel> songsList = await onAudioQuery.querySongs(
         ignoreCase: true,
         orderType: OrderType.ASC_OR_SMALLER,
         uriType: UriType.EXTERNAL,
-      ); 
+      );
       if (songsList.isEmpty) {
         emit(MusicNoSongsState());
       }

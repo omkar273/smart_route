@@ -173,6 +173,12 @@ class _SongInfoPageState extends State<SongInfoPage>
               ),
             );
           }
+          if (state is MusicNoSongsState) {
+            return const Center(
+              child: Text('No song available'),
+            );
+          }
+
           return const Center(child: CircularProgressIndicator.adaptive());
         },
       ),

@@ -7,14 +7,17 @@ class LocationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: onTap,
-      horizontalTitleGap: 0,
-      leading: const Icon(Icons.location_pin),
-      title: Text(
-        location,
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
+    return SizedBox(
+      width: 100,
+      child: ListTile(
+        onTap: onTap,
+        horizontalTitleGap: 0,
+        leading: const Icon(Icons.location_pin),
+        title: Text(
+          location,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
     );
   }
