@@ -1,6 +1,10 @@
 # Smart Route
 
 Welcome to Smart Route! 
+
+# Youtube Tutorial 
+https://youtu.be/BqHOtlh3Dd4?si=-qe3mqlR76Pw7_K-
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
