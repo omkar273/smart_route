@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio_background/just_audio_background.dart';
+import 'package:smart_route/features/maps/presentation/cubit/maps_cubit.dart';
 
 import 'config/routes/app_router.dart';
 import 'core/get_it/service_locator.dart';
@@ -28,8 +29,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MusicHandlerCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MusicHandlerCubit>(
+          create: (context) => MusicHandlerCubit(),
+        ),
+        BlocProvider<MapsCubit>(
+          create: (context) => MapsCubit(),
+        ),
+      ],
       child: MaterialApp.router(
         title: 'Smart Route',
         debugShowCheckedModeBanner: false,
