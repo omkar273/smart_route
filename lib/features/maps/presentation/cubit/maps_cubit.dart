@@ -15,7 +15,7 @@ class MapsCubit extends Cubit<MapsState> {
     }
     emit(state.copyWith(status: LocationPickedState.bothPicked, source: data));
 
-    print(state);
+    // print(state);
   }
 
   void setDestination(PickedData data) {

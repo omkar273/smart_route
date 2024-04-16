@@ -45,7 +45,7 @@ class _SearchTabState extends State<SearchTab> {
                       buttonText: 'Set Current Location',
                       onPicked: (pickedData) {
                         context.read<MapsCubit>().setSource(pickedData);
-                        print(pickedData.addressName);
+                        // print(pickedData.addressName);
                         sourceController.text =
                             pickedData.addressName.substring(0, 20);
                         Navigator.pop(context);
@@ -68,8 +68,8 @@ class _SearchTabState extends State<SearchTab> {
                       buttonText: 'Set Current Location',
                       onPicked: (pickedData) {
                         context.read<MapsCubit>().setDestination(pickedData);
-                        print(pickedData.addressName);
-
+                        // print(pickedData.addressName);
+  
                         destinationController.text =
                             pickedData.addressName.substring(0, 20);
                         Navigator.pop(context);
