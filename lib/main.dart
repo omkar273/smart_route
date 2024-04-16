@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<MusicHandlerCubit>(
           create: (context) => MusicHandlerCubit(),
-        ),
+        ), 
         BlocProvider<MapsCubit>(
           create: (context) => MapsCubit(),
         ),

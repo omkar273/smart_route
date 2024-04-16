@@ -79,6 +79,48 @@ class _SearchTabState extends State<SearchTab> {
                 ));
               },
             ),
+            BlocBuilder<MapsCubit, MapsState>(
+              builder: (context, state) {
+                if (state.status == LocationPickedState.bothPicked) {
+                  return Container(
+                    width: double.maxFinite,
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.only(top: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey.shade300,
+                    ),
+                    child: Column(
+                      children: [
+                        const Text('Nearby Petrol pump'),
+                        Vspace(10),
+                        const Icon(
+                          Icons.local_hospital_outlined,
+                          size: 50,
+                        ),
+                        Vspace(10),
+                        const Text(
+                          'HP Petrol Pump',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Vspace(5),
+                        const Text(
+                          '2 Km away',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                return Container();
+              },
+            )
           ],
         ),
       ),
