@@ -4,6 +4,7 @@ import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.
 import 'package:smart_route/core/utils/spacing.dart';
 import 'package:smart_route/features/maps/presentation/cubit/maps_cubit.dart';
 import 'package:smart_route/features/maps/presentation/widgets/search.dart';
+import 'package:smart_route/main.dart';
 
 class SearchTab extends StatefulWidget {
   const SearchTab({super.key});
@@ -29,7 +30,7 @@ class _SearchTabState extends State<SearchTab> {
       padding: const EdgeInsets.all(10),
       height: double.maxFinite,
       width: double.maxFinite,
-      color: Colors.white,
+      color: appPrimaryColor,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -69,7 +70,7 @@ class _SearchTabState extends State<SearchTab> {
                       onPicked: (pickedData) {
                         context.read<MapsCubit>().setDestination(pickedData);
                         // print(pickedData.addressName);
-  
+
                         destinationController.text =
                             pickedData.addressName.substring(0, 20);
                         Navigator.pop(context);

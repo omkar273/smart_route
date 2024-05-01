@@ -22,7 +22,8 @@ void main() async {
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
-const appPrimaryColor = Color(0xffA825F8);
+const appPrimaryColor = Color(0xffffd717);
+const appPrimaryLightColor = Color.fromARGB(255, 255, 235, 134);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<MusicHandlerCubit>(
           create: (context) => MusicHandlerCubit(),
-        ), 
+        ),
         BlocProvider<MapsCubit>(
           create: (context) => MapsCubit(),
         ),

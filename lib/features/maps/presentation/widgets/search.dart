@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_route/main.dart';
 
 class SearchTextField extends StatefulWidget {
   final String? hintText;
@@ -37,7 +38,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
               borderSide: BorderSide.none,
             ),
             prefixIcon: const Icon(Icons.location_pin),
-            fillColor: Colors.grey.withOpacity(0.15),
+            fillColor: appPrimaryLightColor,
             filled: true,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

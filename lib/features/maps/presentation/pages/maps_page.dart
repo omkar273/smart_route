@@ -5,6 +5,7 @@ import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.
 import 'package:smart_route/core/utils/show_snackbar.dart';
 import 'package:smart_route/features/maps/presentation/cubit/maps_cubit.dart';
 import 'package:smart_route/features/maps/presentation/widgets/search_tab.dart';
+import 'package:smart_route/main.dart';
 
 class MapNavigation extends StatefulWidget {
   static const routeName = 'MapNavigationPage';
@@ -181,7 +182,7 @@ class _MapNavigationState extends State<MapNavigation> with OSMMixinObserver {
                       personMarker: const MarkerIcon(
                         icon: Icon(
                           Icons.person_pin_circle,
-                          color: Colors.purple,
+                          color: appPrimaryColor,
                           size: 175,
                         ),
                       ),

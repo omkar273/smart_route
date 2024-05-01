@@ -24,7 +24,7 @@ class LandingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -33,7 +33,7 @@ class LandingPage extends StatelessWidget {
                       Approuter.router.goNamed(MapNavigation.routeName);
                     },
                     icon: const Icon(Icons.home),
-                    iconSize: 36,
+                    iconSize: 26,
                     color: Colors.white,
                   ),
                   IconButton(
@@ -41,7 +41,7 @@ class LandingPage extends StatelessWidget {
                       Approuter.router.goNamed(SongsPage.routeName);
                     },
                     icon: const Icon(Icons.music_note),
-                    iconSize: 36,
+                    iconSize: 26,
                     color: Colors.white,
                   ),
                   IconButton(
@@ -49,7 +49,7 @@ class LandingPage extends StatelessWidget {
                       Approuter.router.goNamed(SongInfoPage.routeName);
                     },
                     icon: const Icon(Icons.play_arrow_rounded),
-                    iconSize: 36,
+                    iconSize: 26,
                     color: Colors.white,
                   ),
                 ],
