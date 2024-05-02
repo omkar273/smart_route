@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 import 'package:smart_route/core/utils/spacing.dart';
 import 'package:smart_route/features/maps/presentation/cubit/maps_cubit.dart';
+import 'package:smart_route/features/maps/presentation/cubit/places_data.dart';
 import 'package:smart_route/features/maps/presentation/widgets/search.dart';
 import 'package:smart_route/main.dart';
 
 class SearchTab extends StatefulWidget {
-  const SearchTab({super.key});
-
+  const SearchTab({super.key, required this.dropdownList});
+  final List<Place> dropdownList;
   @override
   State<SearchTab> createState() => _SearchTabState();
 }
@@ -16,6 +17,7 @@ class SearchTab extends StatefulWidget {
 class _SearchTabState extends State<SearchTab> {
   late final TextEditingController sourceController;
   late final TextEditingController destinationController;
+  int selectedDropdownItem = 0;
 
   @override
   void initState() {
@@ -80,48 +82,74 @@ class _SearchTabState extends State<SearchTab> {
                 ));
               },
             ),
-            BlocBuilder<MapsCubit, MapsState>(
-              builder: (context, state) {
-                if (state.status == LocationPickedState.bothPicked) {
-                  return Container(
-                    width: double.maxFinite,
-                    padding: const EdgeInsets.all(12),
-                    margin: const EdgeInsets.only(top: 20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.grey.shade300,
+            Vspace(15),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: DropdownButton<int>(
+                icon: const Icon(Icons.arrow_drop_down),
+                dropdownColor: Colors.white,
+                isExpanded: true,
+                padding: const EdgeInsets.all(10),
+                value: selectedDropdownItem,
+                items: List.generate(
+                  widget.dropdownList.length,
+                  (index) => DropdownMenuItem(
+                    value: index,
+                    child: Text(
+                      widget.dropdownList[index].name,
+                      softWrap: true,
+                      overflow: TextOverflow.clip,
                     ),
-                    child: Column(
-                      children: [
-                        const Text('Nearby Petrol pump'),
-                        Vspace(10),
-                        const Icon(
-                          Icons.local_hospital_outlined,
-                          size: 50,
-                        ),
-                        Vspace(10),
-                        const Text(
-                          'HP Petrol Pump',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Vspace(5),
-                        const Text(
-                          '2 Km away',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
+                  ),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    selectedDropdownItem = value ?? selectedDropdownItem;
+                  });
+                },
+              ),
+            ),
+            Container(
+              width: double.maxFinite,
+              padding: const EdgeInsets.all(12),
+              margin: const EdgeInsets.only(top: 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    widget.dropdownList[selectedDropdownItem].name,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
                     ),
-                  );
-                }
-                return Container();
-              },
-            )
+                  ),
+                  Vspace(20),
+                  Text(widget.dropdownList[selectedDropdownItem].address),
+                  // Vspace(10),
+                  // const Icon(
+                  //   Icons.local_hospital_outlined,
+                  //   size: 50,
+                  // ),
+
+                  // Vspace(5),
+                  // const Text(
+                  //   '2 Km away',
+                  //   style: TextStyle(
+                  //     fontSize: 18,
+                  //     fontWeight: FontWeight.w700,
+                  //   ),
+                  // ),
+                ],
+              ),
+            ),
+            Vspace(50),
           ],
         ),
       ),

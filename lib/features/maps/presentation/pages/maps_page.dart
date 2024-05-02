@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 import 'package:smart_route/core/utils/show_snackbar.dart';
+import 'package:smart_route/core/utils/spacing.dart';
 import 'package:smart_route/features/maps/presentation/cubit/maps_cubit.dart';
+import 'package:smart_route/features/maps/presentation/cubit/places_data.dart';
 import 'package:smart_route/features/maps/presentation/widgets/search_tab.dart';
 import 'package:smart_route/main.dart';
 
@@ -26,12 +28,36 @@ class _MapNavigationState extends State<MapNavigation> with OSMMixinObserver {
   //   initPosition: GeoPoint(latitude: 19.997454, longitude: 73.789803),
   // );
 
+  final List<String> chipList = [
+    'Temples',
+    'Cafes',
+    'Gardens',
+    'Spiritual Spots',
+    'Petrol pumps',
+    'Tourist spots',
+  ];
+
   @override
   void initState() {
     super.initState();
     controller.listenerMapSingleTapping.addListener(() {
       if (controller.listenerMapSingleTapping.value != null) {}
     });
+  }
+
+  int _selectedChip = 0;
+  List<Place> dropdownList = templesList;
+
+  void updateSelectedChip(int chipIndex) {
+    setState(() {
+      _selectedChip = chipIndex;
+    });
+
+    switch (chipIndex) {
+      case 0:
+        break;
+      default:
+    }
   }
 
   @override
@@ -149,15 +175,6 @@ class _MapNavigationState extends State<MapNavigation> with OSMMixinObserver {
                   },
                   child: Container(),
                 ),
-                Positioned(
-                  bottom: 20,
-                  left: 200,
-                  width: double.maxFinite,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Start'),
-                  ),
-                ),
                 OSMFlutter(
                   onMapIsReady: (isReady) {
                     // addMarker(controller);
@@ -199,12 +216,55 @@ class _MapNavigationState extends State<MapNavigation> with OSMMixinObserver {
                   ),
                 ),
                 Positioned(
-                  bottom: 20,
-                  left: 200,
-                  width: double.maxFinite,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Start'),
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  // bottom: 0,
+                  // width: double.maxFinite,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        TextFormField(
+                          textInputAction: TextInputAction.search,
+                          decoration: InputDecoration(
+                            hintText: 'Search here',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            ),
+                            prefixIcon: const Icon(Icons.search),
+                            fillColor: Colors.white,
+                            filled: true,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: double.maxFinite,
+                          height: 50,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return ChoiceChip(
+                                label: Text(chipList[index]),
+                                selected: index == _selectedChip,
+                                onSelected: (value) {
+                                  if (value) {
+                                    updateSelectedChip(index);
+                                  }
+                                },
+                              );
+                            },
+                            separatorBuilder: (context, index) => Hspace(10),
+                            itemCount: chipList.length,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -212,10 +272,12 @@ class _MapNavigationState extends State<MapNavigation> with OSMMixinObserver {
           ),
 
           // searchtab
-          const Expanded(
+          Expanded(
             flex: 30,
-            child: SearchTab(),
-          )
+            child: SearchTab(
+              dropdownList: dropdownList,
+            ),
+          ),
         ],
       ),
     );

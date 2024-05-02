@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smart_route/core/pages/landing_page.dart';
+import 'package:smart_route/features/alerts/presentation/pages/emergency_page.dart';
 import 'package:smart_route/features/audio_handler/presentation/pages/song_info_page.dart';
 import 'package:smart_route/features/audio_handler/presentation/pages/songs_page.dart';
 import 'package:smart_route/features/maps/presentation/pages/maps_page.dart';
+import 'package:smart_route/features/profile/presentation/pages/profile_page.dart';
 
 class Approuter {
   static final Approuter _instance = Approuter.init();
@@ -16,6 +18,10 @@ class Approuter {
   static final GlobalKey<NavigatorState> mapTabNavigatorKey =
       GlobalKey<NavigatorState>();
   static final GlobalKey<NavigatorState> songTabNavigatorKey =
+      GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> profileTabNavigatorKey =
+      GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> emergencyTabNavigatorKey =
       GlobalKey<NavigatorState>();
 
   Approuter.init() {
@@ -49,6 +55,28 @@ class Approuter {
                 name: SongInfoPage.routeName,
                 pageBuilder: (context, state) =>
                     getPage(child: const SongInfoPage(), state: state),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: emergencyTabNavigatorKey,
+            routes: [
+              GoRoute(
+                path: EmergencyContactPage.routePath,
+                name: EmergencyContactPage.routeName,
+                pageBuilder: (context, state) =>
+                    getPage(child: EmergencyContactPage(), state: state),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            navigatorKey: profileTabNavigatorKey,
+            routes: [
+              GoRoute(
+                path: ProfilePage.routePath,
+                name: ProfilePage.routeName,
+                pageBuilder: (context, state) =>
+                    getPage(child: const ProfilePage(), state: state),
               ),
             ],
           ),
