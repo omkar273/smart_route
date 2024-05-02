@@ -73,6 +73,60 @@ class ProfilePage extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+            Vspace(25),
+            Card(
+              color: appPrimaryLightColor,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Icon(
+                      Icons.car_rental,
+                      size: 32,
+                    ),
+                    Hspace(15),
+                    const Text(
+                      'Vehicle Travelled 1521Km',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    // Icon(
+                    //   Icons.car_rental,
+                    //   size: 32,
+                    // ),
+                  ],
+                ),
+              ),
+            ),
+            Vspace(15),
+            Card(
+              color: appPrimaryLightColor,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Icon(
+                      Icons.car_rental,
+                      size: 32,
+                    ),
+                    Hspace(15),
+                    const Text(
+                      'MH15XXXXX',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             )
           ],
         ),
