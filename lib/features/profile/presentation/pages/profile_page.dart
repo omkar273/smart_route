@@ -59,7 +59,7 @@ class ProfilePage extends StatelessWidget {
                               const Icon(Icons.phone),
                               Hspace(15),
                               const Text(
-                                '9511',
+                                '9511XXXXXX',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
