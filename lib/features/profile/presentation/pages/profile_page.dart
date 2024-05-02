@@ -33,7 +33,7 @@ class ProfilePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Sanket sonawane',
+                            'John Doe',
                             style: TextStyle(
                               fontSize: 28,
                               fontWeight: FontWeight.w600,
@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
                               const Icon(Icons.email),
                               Hspace(15),
                               const Text(
-                                'sanketsonawane@gmail.com',
+                                'johndoe@gmail.com',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
@@ -59,7 +59,7 @@ class ProfilePage extends StatelessWidget {
                               const Icon(Icons.phone),
                               Hspace(15),
                               const Text(
-                                '9503932788',
+                                '9511',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
